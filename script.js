@@ -1,11 +1,3 @@
-let humanScore = 0;
-let computerScore = 0;
-let humanChoice;
-let computerChoice;
-let humanSelection = getHumanChoice();
-let computerSelection = getComputerChoice();
-
-
 // Get Computer Choice by getting random number between 0-2
 function getComputerChoice() {
   if (Math.floor(Math.random() * 3) == 0) {
@@ -67,15 +59,16 @@ function playRound(humanChoice, computerChoice) {
 function playGame() {
   humanScore = 0;
   computerScore = 0;
+  
   for (let i = 0; i < 5; i++) {
-    getHumanChoice();
-    getComputerChoice();
+    let humanSelection = getHumanChoice();
+    let computerSelection = getComputerChoice();
     playRound(humanSelection, computerSelection);
   }
   if (computerScore > humanScore) {
-    alert("Computer Wins!");
+    alert(`Computer Wins! Final Score -  Computer: ${computerScore} / Human: ${humanScore}`);
   } else {
-    alert("Human Wins!");
+    alert(`Human Wins! Final Score -  Computer: ${computerScore} / Human: ${humanScore}`);
   }
 }
 

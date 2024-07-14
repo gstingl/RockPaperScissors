@@ -1,5 +1,30 @@
-let humanScore = 0;
-let computerScore = 0;
+const rockbtn = document.querySelector(".rockbtn");
+const paperbtn = document.querySelector(".paperbtn");
+const scissorsbtn = document.querySelector(".scissorsbtn");
+let humanChoice;
+let computerChoice;
+
+rockbtn.addEventListener("click", () => {
+  humanChoice = "Rock";
+  computerChoice = getComputerChoice();
+  console.log(humanChoice);
+  console.log(computerChoice);
+  playRound(humanChoice, computerChoice);
+});
+paperbtn.addEventListener("click", () => {
+  humanChoice = "Paper";
+  computerChoice = getComputerChoice();
+  console.log(humanChoice);
+  console.log(computerChoice);
+  playRound(humanChoice, computerChoice);
+});
+scissorsbtn.addEventListener("click", () => {
+  humanChoice = "Scissors";
+  computerChoice = getComputerChoice();
+  console.log(humanChoice);
+  console.log(computerChoice);
+  playRound(humanChoice, computerChoice);
+});
 
 // Get Computer Choice by getting random number between 0-2
 function getComputerChoice() {
@@ -13,24 +38,24 @@ function getComputerChoice() {
 }
 
 // Get Human Choice by getting input via prompt
-function getHumanChoice() {
-  let humanChoice = prompt("Enter Rock, Paper or Scissors");
-  switch(humanChoice) {
-    case 'Rock':
-      return "Rock";
-      break;
-    case 'Paper':
-      return "Paper";
-      break;
-    case 'Scissors':
-      return "Scissors";
-      break;
-    default:
-      alert("Not a valid input")
-  }
-}
+//function getHumanChoice() {
+  //let humanChoice = prompt("Enter Rock, Paper or Scissors");
+  //switch(humanChoice) {
+    //case 'Rock':
+      //return "Rock";
+      //break;
+    //case 'Paper':
+      //return "Paper";
+      //break;
+    //case 'Scissors':
+      //return "Scissors";
+      //break;
+    //default:
+      //alert("Not a valid input")
+  //}
+//}
 
-// Logic for who wins based on input
+//Compare and delacre winner
 function playRound(humanChoice, computerChoice) {
   if (humanChoice === "Rock" && computerChoice === "Paper") {
     alert("You lose! Paper beats rock!");
@@ -59,12 +84,22 @@ function playRound(humanChoice, computerChoice) {
   }
 }
 
-function playGame() {
-  const humanSelection = getHumanChoice();
-  const computerSelection = getComputerChoice();
-  for (let rounds = 1; rounds <= 5; rounds++) {
-    playRound(humanChoice, computerChoice);
-  }
-}
 
-playGame();
+// This is the logic for playing 5 rounds and running the game
+//function playGame() {
+  //humanScore = 0;
+  //computerScore = 0;
+  
+  //for (let i = 0; i < 5; i++) {
+    //let humanSelection = getHumanChoice();
+    //let computerSelection = getComputerChoice();
+    //playRound(humanSelection, computerSelection);
+  //}
+  //if (computerScore > humanScore) {
+    //alert(`Computer Wins! Final Score -  Computer: ${computerScore} / Human: ${humanScore}`);
+  //} else {
+    //alert(`Human Wins! Final Score -  Computer: ${computerScore} / Human: ${humanScore}`);
+  //}
+//}
+
+// playGame();

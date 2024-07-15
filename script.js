@@ -1,30 +1,33 @@
 const rockbtn = document.querySelector(".rockbtn");
 const paperbtn = document.querySelector(".paperbtn");
 const scissorsbtn = document.querySelector(".scissorsbtn");
-let humanChoice;
-let computerChoice;
+const humScore = document.querySelector(".humScore");
+const comScore = document.querySelector(".comScore");
+const response = document.querySelector(".winner");
+const resetScore = document.querySelector(".reset");
+
+humanScore = 0;
+computerScore = 0;
 
 rockbtn.addEventListener("click", () => {
   humanChoice = "Rock";
   computerChoice = getComputerChoice();
-  console.log(humanChoice);
-  console.log(computerChoice);
   playRound(humanChoice, computerChoice);
+  chooseWinner();
 });
 paperbtn.addEventListener("click", () => {
   humanChoice = "Paper";
   computerChoice = getComputerChoice();
-  console.log(humanChoice);
-  console.log(computerChoice);
   playRound(humanChoice, computerChoice);
+  chooseWinner();
 });
 scissorsbtn.addEventListener("click", () => {
   humanChoice = "Scissors";
   computerChoice = getComputerChoice();
-  console.log(humanChoice);
-  console.log(computerChoice);
   playRound(humanChoice, computerChoice);
+  chooseWinner();
 });
+resetScore.addEventListener("click", resetGame);
 
 // Get Computer Choice by getting random number between 0-2
 function getComputerChoice() {
@@ -37,51 +40,55 @@ function getComputerChoice() {
   }
 }
 
-// Get Human Choice by getting input via prompt
-//function getHumanChoice() {
-  //let humanChoice = prompt("Enter Rock, Paper or Scissors");
-  //switch(humanChoice) {
-    //case 'Rock':
-      //return "Rock";
-      //break;
-    //case 'Paper':
-      //return "Paper";
-      //break;
-    //case 'Scissors':
-      //return "Scissors";
-      //break;
-    //default:
-      //alert("Not a valid input")
-  //}
-//}
-
-//Compare and delacre winner
+//Compare and declare winner
 function playRound(humanChoice, computerChoice) {
   if (humanChoice === "Rock" && computerChoice === "Paper") {
-    alert("You lose! Paper beats rock!");
+    response.textContent = "You lose! Paper beats rock!";
     computerScore++;
+    comScore.textContent = `CPU: ${computerScore}`;
   } else if (humanChoice === "Rock" && computerChoice === "Scissors") {
-    alert("You Win! Rock beats scissors!");
+    response.textContent = "You Win! Rock beats scissors!";
     humanScore++;
+    humScore.textContent = `Human: ${humanScore}`;
   } else if (humanChoice === "Rock" && computerChoice === "Rock") {
-    alert("Tie! No winner declared");
+    response.textContent = "Tie! No winner declared";
   } else if (humanChoice === "Paper" && computerChoice === "Rock") {
-    alert("You Win! Paper beats rock!");
+    response.textContent = "You Win! Paper beats rock!";
     humanScore++;
+    humScore.textContent = `Human: ${humanScore}`;
   } else if (humanChoice === "Paper" && computerChoice === "Paper") {
-    alert("Tie! No winner declared");
+    response.textContent = "Tie! No winner declared";
   } else if (humanChoice === "Paper" && computerChoice === "Scissors") {
-    alert("You lose! Scissors beats paper!");
+    response.textContent = "You lose! Scissors beats paper!";
     computerScore++;
+    comScore.textContent = `CPU: ${computerScore}`;
   } else if (humanChoice === "Scissors" && computerChoice === "Rock") {
-    alert("You Lose! Rock beats Scissors!");
+    response.textContent = "You Lose! Rock beats Scissors!";
     computerScore++;
+    comScore.textContent = `CPU: ${computerScore}`;
   } else if (humanChoice === "Scissors" && computerChoice === "Paper") {
-    alert("You Win! Scissors beats paper!");
+    response.textContent = "You Win! Scissors beats paper!";
     humanScore++;
+    humScore.textContent = `Human: ${humanScore}`;
   } else if (humanChoice === "Scissors" && computerChoice === "Scissors") {
-    alert("Tie! No winner declared");
+    response.textContent = "Tie! No winner declared";
   }
+}
+
+function chooseWinner() {
+  if (humanScore == 5) {
+    response.textContent = "Humans win! Hit reset to play again or keep playing with current score!";
+  } else if (computerScore == 5) {
+    response.textContent = "Computers win! Hit reset to play again or keep playing with current score!";
+  }
+}
+
+function resetGame() {
+  humanScore = 0;
+  computerScore = 0;
+  humScore.textContent = "Human: 0";
+  comScore.textContent = "Computer: 0";
+  response.textContent = "Game Reset, Choose Rock/Paper/Scissors to start!"
 }
 
 

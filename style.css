@@ -23,31 +23,20 @@ img {
     border: solid black 1px;
 }
 
-.buttons {
-    padding: 50px;
-    padding-bottom: 100px;
+.buttons, button {
+    margin: 50px;
     display: flex;
     flex-direction: row;
     justify-content: center;
 }
 
-.score {
-    font-size: 40px;
-    margin: 10px;
-    font-weight: 800;
-    color: green;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    display: flex;
-    justify-content: center;
-}
-
 .winner {
-    font-size: 40px;
+    font-size: 50px;
     font-weight: 800;
-    color: rebeccapurple;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+    color: black;
     display: flex;
     justify-content: center;
+    margin: 10px;
 }
 
 .reset {
@@ -60,4 +49,12 @@ img {
     background-color: white;
     border: solid red 3px;
     border-radius: 25px;
+}
+
+.comScore, .humScore {
+    font-size: 40px;
+    font-weight: 800;
+    color: black;
+    display: flex;
+    justify-content: center;
 }
